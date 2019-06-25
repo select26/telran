@@ -1,5 +1,6 @@
 package app;
 
+import java.util.Iterator;
 import java.util.Random;
 
 import model.MyArrayList;
@@ -28,8 +29,20 @@ public class MyArrayListApp {
 //		mali.trim();
 		System.out.println(mali.getCapacity() + " \t" + mali.getSize());
 //		mali.remove(22);
-		mali.removeRange(0, 5);
+		mali.removeRange(0, 3);
 		System.out.println(mali);
+		Iterator<Integer> it = mali.iterator();
+		for (int i = 0; i < NUM_NUM; i++) {
+//			System.out.print("  " + it.next());
+			int res = 0;
+			try {
+				res = it.next();
+				System.out.println(res);
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		
 	}
 
 }

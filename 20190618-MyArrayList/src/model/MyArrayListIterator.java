@@ -1,6 +1,7 @@
 package model;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class MyArrayListIterator<T> implements Iterator<T> {
 
@@ -19,7 +20,7 @@ public class MyArrayListIterator<T> implements Iterator<T> {
 
 	@Override
 	public T next() {
-	
+		if (!hasNext()) throw new NoSuchElementException("MyArrayListIterator");
 		return mal.get(current++);
 	}
 
