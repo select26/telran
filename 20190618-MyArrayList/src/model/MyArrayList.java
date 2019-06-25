@@ -49,11 +49,12 @@ public class MyArrayList<T> implements MyList<T> {
 	}
 
 	@Override
-	public boolean add(T data, int index) {
+	public boolean add(T data, int index) throws MyArrayListOutOfBounds {
 
-		if (index < 0 || index >= size)
-			return false;
-
+//		if (index < 0 || index >= size)	return false;
+		if (index < 0 || index >= size)	throw new MyArrayListOutOfBounds(
+				"addByIndex ERROR!", index, size); 
+				
 		if (size == capacity)
 			enlargeArray();
 		System.arraycopy(array, index, array, index + 1, size - index);

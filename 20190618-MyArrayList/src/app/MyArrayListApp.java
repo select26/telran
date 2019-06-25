@@ -4,6 +4,7 @@ import java.util.Iterator;
 import java.util.Random;
 
 import model.MyArrayList;
+import model.MyArrayListOutOfBounds;
 
 public class MyArrayListApp {
 
@@ -31,18 +32,27 @@ public class MyArrayListApp {
 //		mali.remove(22);
 		mali.removeRange(0, 3);
 		System.out.println(mali);
-		Iterator<Integer> it = mali.iterator();
-		for (int i = 0; i < NUM_NUM; i++) {
-//			System.out.print("  " + it.next());
-			int res = 0;
-			try {
-				res = it.next();
-				System.out.println(res);
-			} catch (Exception e) {
-				System.out.println(e.getMessage());
-			}
+//		Iterator<Integer> it = mali.iterator();
+//		for (int i = 0; i < NUM_NUM; i++) {
+////			System.out.print("  " + it.next());
+//			int res = 0;
+//			try {
+//				res = it.next();
+//				System.out.println(res);
+//			} catch (Exception e) {
+//				System.out.println(e.getMessage());
+//			}
+//		}
+
+		try {
+			mali.add(333, 22);
+		} catch (MyArrayListOutOfBounds e) {
+			System.err.println(e.getMessage());
+			System.err.println("index: " + e.getIndex());
+			System.err.println("size: " + e.getSize());
 		}
-		
+
+		System.out.println(mali);
 	}
 
 }

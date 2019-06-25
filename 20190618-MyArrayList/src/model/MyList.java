@@ -3,7 +3,7 @@ package model;
 public interface MyList<T> extends Iterable<T> {
 	
 	public void add(T data);
-	public boolean add(T data, int index);
+	public boolean add(T data, int index) throws MyArrayListOutOfBounds;
 	public T get(int index);
 	public boolean set(T data, int index);
 	public int indexOf (T value); 
