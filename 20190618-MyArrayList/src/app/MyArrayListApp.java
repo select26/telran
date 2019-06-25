@@ -1,0 +1,35 @@
+package app;
+
+import java.util.Random;
+
+import model.MyArrayList;
+
+public class MyArrayListApp {
+
+	private static final int NUM_NUM = 20;
+	static Random gen = new Random(12345);
+	
+	public static void main(String[] args) {
+		MyArrayList<Integer> mali = new MyArrayList<>(); 
+		for (int i = 0; i < NUM_NUM; i++) mali.add(gen.nextInt(10));
+//		System.out.println(mali);
+//		System.out.println(mali.get(5));
+//		System.out.println(mali.set(666, 8));
+//		System.out.println(mali);
+//		mali.add(888, 10);
+		System.out.println(mali);
+		System.out.println("---------------------------------------");
+//		System.out.println(mali.contains(6666));
+//		System.out.println("capacity before: " + mali.getCapacity());
+//		mali.trim();
+//		System.out.println("capacity after:  " + mali.getCapacity());
+//		mali.shuffle();
+//		System.out.println(mali);
+//		mali.trim();
+		System.out.println(mali.getCapacity() + " \t" + mali.getSize());
+//		mali.remove(22);
+		mali.removeRange(0, 5);
+		System.out.println(mali);
+	}
+
+}
