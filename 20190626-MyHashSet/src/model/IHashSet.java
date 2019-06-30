@@ -1,6 +1,6 @@
 package model;
 
-public interface IHashSet<T> {
+public interface IHashSet<T> extends Iterable<T>{
 
 	boolean add(T data);
 	boolean contains(T data);

@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class MyHashSet<T> implements IHashSet<T>{
 
@@ -78,6 +79,11 @@ public class MyHashSet<T> implements IHashSet<T>{
 		for (int i = 0; i < numShelvs; i++) {
 			System.out.println(i + ": " + hs.get(i));
 		}
+	}
+
+	@Override
+	public Iterator<T> iterator() {
+		return new MyHashSetIterator<>(hs);
 	}
 	
 }

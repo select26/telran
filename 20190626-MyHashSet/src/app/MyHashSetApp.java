@@ -21,6 +21,9 @@ public class MyHashSetApp {
 		hsi.add(-65);
 		hsi.display();
 		
+		for (Integer i : hsi)System.out.print(i+"  ");
+		System.out.println();
+		
 //		System.out.println(hsi.contains(50));
 //		System.out.println(hsi.remove(50));
 //		hsi.display();
