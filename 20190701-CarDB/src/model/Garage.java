@@ -7,14 +7,16 @@ import java.util.TreeMap;
 import java.util.TreeSet;
 
 import dto.Car;
+import maplist.TreeListMap;
 
 public class Garage implements IGarage {
 	
 	private HashMap<Integer, Car> idHM = new HashMap<>();
-//	private HashMap<String, TreeSet<Car>> modelHM = new HashMap<>();
-	private TreeMap<String, TreeSet<Car>> modelTM = new TreeMap<>();
-	private TreeMap<Integer, TreeSet<Car>> yearTM = new TreeMap<>();
-	private TreeMap<Double, TreeSet<Car>> engineTM = new TreeMap<>();
+	private TreeListMap<String, Car> modelTM = new TreeListMap<>();
+	private TreeListMap<Integer, Car> yearTM = new TreeListMap<>();
+	private TreeListMap<Double, Car> engineTM = new TreeListMap<>();
+	
+//	private static Map<String, Tree>
 	
 	@Override
 	public void fill(int numCar) {
@@ -27,23 +29,27 @@ public class Garage implements IGarage {
 		if (idHM.containsKey(id)) return false;
 		idHM.put(id, car);
 		
-		String model = car.getModel();						// CarsByModel
-		TreeSet<Car> modelTS = modelTM.get(model);			//
-		if(modelTS == null) modelTS = new TreeSet<Car>();	//
-		modelTS.add(car);									//
-		modelTM.put(model, modelTS);						//
+		modelTM.add(car.getModel(), car);
+		yearTM.add(car.getYear(), car);
+		engineTM.add(car.getEngine(), car);
 		
-		int year = car.getYear();							// CarsByYear
-		TreeSet<Car> yearTS = yearTM.get(year);				//
-		if (yearTS==null) yearTS = new TreeSet<Car>();		//
-		yearTS.add(car);									//
-		yearTM.put(year, yearTS);							//
-		
-		Double engine = car.getEngine();					// CarsByYear
-		TreeSet<Car> engineTS = engineTM.get(engine);		//
-		if (engineTS==null) engineTS = new TreeSet<Car>();	//
-		engineTS.add(car);									//
-		engineTM.put(engine, engineTS);						//
+//		String model = car.getModel();						// CarsByModel
+//		TreeSet<Car> modelTS = modelTM.get(model);			//
+//		if(modelTS == null) modelTS = new TreeSet<Car>();	//
+//		modelTS.add(car);									//
+//		modelTM.put(model, modelTS);						//
+//		
+//		int year = car.getYear();							// CarsByYear
+//		TreeSet<Car> yearTS = yearTM.get(year);				//
+//		if (yearTS==null) yearTS = new TreeSet<Car>();		//
+//		yearTS.add(car);									//
+//		yearTM.put(year, yearTS);							//
+//		
+//		Double engine = car.getEngine();					// CarsByYear
+//		TreeSet<Car> engineTS = engineTM.get(engine);		//
+//		if (engineTS==null) engineTS = new TreeSet<Car>();	//
+//		engineTS.add(car);									//
+//		engineTM.put(engine, engineTS);						//
 		
 		return true;
 	}
@@ -58,9 +64,9 @@ public class Garage implements IGarage {
 		if (car == null) return false;
 		boolean result = ( idHM.remove(car.getId()) != null );
 		if (result) { 
-			modelTM.get(car.getModel()).remove(car);
-			yearTM.get(car.getYear()).remove(car);
-			engineTM.get(car.getEngine()).remove(car);
+			result = modelTM.remove(car.getModel(), car) && result;
+			result = yearTM.remove(car.getYear(), car) && result;
+			result = engineTM.remove(car.getEngine(), car) && result;
 		}
 		return result;
 	}
@@ -85,23 +91,19 @@ public class Garage implements IGarage {
 	@Override
 	public Iterable<Car> allCarsByModel(String model) {
 		TreeSet<Car> result = modelTM.get(model);
-		return result == null ? new TreeSet<Car>() : result;  
+//		return result == null ? new TreeSet<Car>() : result;
+		return modelTM.get(model);
 	}
 
 	@Override
 	public Iterable<Car> allCarsByYearRange(int min, int max) {
-		ArrayList<Car> result = new ArrayList<>();
-		for (TreeSet<Car> tsc : yearTM.subMap(min, true, max, true).values()) 
-			result.addAll(tsc);
-		return result;
+		return yearTM.getInRange(min, max);
 	}
 
 	@Override
 	public Iterable<Car> allCarsByEngineRange(double min, double max) {
-		ArrayList<Car> result = new ArrayList<>();
-		for (TreeSet<Car> tsc : engineTM.subMap(min, true, max, true).values()) 
-			result.addAll(tsc);
-		return result;	}
+		return engineTM.getInRange(min, max);	
+	}
 
 	@Override
 	public Iterable<Car> allCarsByAC(boolean ac) {
@@ -114,23 +116,17 @@ public class Garage implements IGarage {
 
 	@Override
 	public Iterable<Car> allCarsSortedByModel() {
-		ArrayList<Car> result = new ArrayList<>();
-		for (TreeSet<Car> tsc : modelTM.values()) result.addAll(tsc);
-		return result;
+		return modelTM.getAll();
 	}
 
 	@Override
 	public Iterable<Car> allCarsSortedByYear() {
-		ArrayList<Car> result = new ArrayList<>();
-		for (TreeSet<Car> tsc : yearTM.values()) result.addAll(tsc);
-		return result;
+		return yearTM.getAll();
 	}
 
 	@Override
 	public Iterable<Car> allCarsSortedByEngine() {
-		ArrayList<Car> result = new ArrayList<>();
-		for (TreeSet<Car> tsc : engineTM.values()) result.addAll(tsc);
-		return result;
+		return engineTM.getAll();
 	}
 
 }
