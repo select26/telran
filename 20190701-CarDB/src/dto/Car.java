@@ -1,11 +1,5 @@
 package dto;
 
-import java.util.Comparator;
-
-import comparators.EngineCarComparator;
-import comparators.ModelCarComparator;
-import comparators.NaturalCarComparator;
-import comparators.YearCarComparator;
 import randomlib.RandomLib;
 
 public class Car implements Comparable<Car>{
@@ -14,7 +8,7 @@ public class Car implements Comparable<Car>{
 //			(new ModelCarComparator())
 //			.thenComparing(new YearCarComparator())
 //			.thenComparing(new EngineCarComparator());
-	private static Comparator<Car> naturalComparator = new NaturalCarComparator(); 
+//	private static Comparator<Car> naturalComparator = new NaturalCarComparator(); 
 
 	private static final String[] CAR_MODELS = {"TOYOTA", "VOLGA", "FORD",
 						"MERCEDES", "MAZDA", "NISSAN", "LEXUS", "JAGUAR", "TESLA"};
@@ -53,9 +47,9 @@ public class Car implements Comparable<Car>{
 		super();
 	}
 	
-	public static Comparator<Car> getComparator() {
-		return naturalComparator;
-	}
+//	public static Comparator<Car> getComparator() {
+//		return naturalComparator;
+//	}
 	
 	public String getModel() {
 		return model;
@@ -144,7 +138,8 @@ public class Car implements Comparable<Car>{
 	public int compareTo(Car other) {
 //		int modelComp = model.compareTo(other.model);
 //		return modelComp != 0 ? modelComp : (year - other.year);
-		return naturalComparator.compare(this, other);
+//		return naturalComparator.compare(this, other);
+		return CarComparators.naturalCarComparator.compare(this, other);
 	}
 
 //	public static Car[] getRandomGarageArray(int n) {
