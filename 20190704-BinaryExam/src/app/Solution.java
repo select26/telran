@@ -9,7 +9,6 @@ public class Solution {
 	}
 	
 	public static int solution(int A, int B) {
-
 		return countOnes(B*A);
 	}
 
