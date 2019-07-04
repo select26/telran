@@ -30,8 +30,12 @@ public class CarSortingApp {
 		
 //		Arrays.sort(garage, modelComp
 //							.thenComparing(acComp.reversed()));
-		Arrays.sort(garage, engineComp);
-	
+//		Arrays.sort(garage, engineComp);
+//		Arrays.sort(garage, 
+//				(Car c1, Car c2) -> { return c2.getYear() - c1.getYear(); }  
+//				);
+		Arrays.sort(garage, 
+				(c1, c2) -> c2.getYear() - c1.getYear()	);
 		
 		for (int i = 0; i < garage.length; i++) System.out.println(garage[i]);
 		System.out.println("****************************************************");
