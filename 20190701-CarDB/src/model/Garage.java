@@ -2,6 +2,7 @@ package model;
 
 import java.util.HashMap;
 import java.util.TreeSet;
+import java.util.stream.Stream;
 
 import dto.Car;
 import maplist.TreeListMap;
@@ -89,7 +90,8 @@ public class Garage implements IGarage {
 	public Iterable<Car> allCarsByModel(String model) {
 		TreeSet<Car> result = modelTM.get(model);
 //		return result == null ? new TreeSet<Car>() : result;
-		return modelTM.get(model);
+//		return modelTM.get(model);
+		return result;
 	}
 
 	@Override
@@ -125,5 +127,15 @@ public class Garage implements IGarage {
 	public Iterable<Car> allCarsSortedByEngine() {
 		return engineTM.getAll();
 	}
+
+	@Override
+	public Stream<Car> toStream() {
+		return idHM.values().stream();
+	}
+
+//	@Override
+//	public Stream<Car> createStream(int numCars) {
+//		return Stream.generate(() -> Car.randomCar()).limit(numCars);
+//	}
 
 }

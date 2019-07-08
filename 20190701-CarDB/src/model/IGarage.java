@@ -1,5 +1,7 @@
 package model;
 
+import java.util.stream.Stream;
+
 import dto.Car;
 
 public interface IGarage {
@@ -21,4 +23,7 @@ public interface IGarage {
 	Iterable<Car> allCarsSortedByModel();
 	Iterable<Car> allCarsSortedByYear();
 	Iterable<Car> allCarsSortedByEngine();
+	
+	Stream<Car> toStream();
+//	Stream<Car> createStream(int numCars);
 }
