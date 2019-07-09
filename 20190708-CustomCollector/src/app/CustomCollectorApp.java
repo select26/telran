@@ -29,6 +29,8 @@ public class CustomCollectorApp {
 		double averageE = Car.createCarStream(numCars)
 							.collect(averageEngine);
 		System.out.println(averageE);
+		
+//		Collector<Boolean, CarForPrint> 
 	}
 
 }
