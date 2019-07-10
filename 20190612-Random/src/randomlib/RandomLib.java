@@ -1,5 +1,6 @@
 package randomlib;
 
+import java.time.LocalDate;
 import java.util.Random;
 
 public class RandomLib {
@@ -36,5 +37,13 @@ public class RandomLib {
 			return "Array lo tov";
 		return set[gen.nextInt(set.length)];
 	}
-
+	
+//	static Random gen = new Random();
+	public static LocalDate randomLocalDate(LocalDate begin, LocalDate end) {
+		long beginDays = begin.toEpochDay();
+		long endDays = end.toEpochDay();
+		int diapazon = (int) (endDays - beginDays);
+		return LocalDate.ofEpochDay(beginDays + gen.nextInt(diapazon));
+	}
+	
 }
