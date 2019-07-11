@@ -1,13 +1,12 @@
 package randomlib;
 
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Random;
 
-public class RandomLib {
+public class RandomLib_old {
 	private static final int ALPHABET_length = 52;
 	private static final String ALPHABET = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm";
-	public static Random gen = new Random();
+	private static Random gen = new Random();
 
 	public static int nextIntRange(int min, int max) {
 		return min + gen.nextInt(max - min + 1);
@@ -46,15 +45,5 @@ public class RandomLib {
 		int diapazon = (int) (endDays - beginDays);
 		return LocalDate.ofEpochDay(beginDays + gen.nextInt(diapazon));
 	}
-	
-	 public static <T>T randomOfArray(T[] arr) {
-	        int arrLength = arr.length;
-	        return arrLength == 0 ? null : arr[gen.nextInt(arrLength)];
-	 }
-	     
-	    public static <T>T randomOfList(List<T> list) {
-	        int listSize = list.size();
-	        return listSize == 0 ? null : list.get(gen.nextInt(listSize));
-	 }
 	
 }
