@@ -77,7 +77,8 @@ public class LibraryStreams extends Library{
 				.collect(Collectors.toList())
 				;
 	}
-
+ 
+	
 	@Override
 	public Iterable<Book> getAllBooksInPriceRange(double minPrice, double maxPrice) {
 		return library.values()
