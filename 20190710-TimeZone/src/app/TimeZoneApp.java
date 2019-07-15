@@ -7,8 +7,6 @@ import java.util.Arrays;
 import java.util.TreeSet;
 import java.util.stream.Stream;
 
-import javax.swing.text.DateFormatter;
-
 import sun.util.calendar.ZoneInfo;
 
 public class TimeZoneApp {
