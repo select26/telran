@@ -14,6 +14,7 @@ import enumerations.PublisherCountry;
 import enumerations.PublisherName;
 import enumerations.Title;
 import exception.WrongBookDataException;
+import io.FileSystem;
 import library.Library;
 import library.LibraryMaps;
 import utils.Serialiser;
@@ -21,7 +22,7 @@ import utils.Validators;
 
 public class Test {
 
-	private static final int NUM_BOOKS = 3;
+	private static final int NUM_BOOKS = 20;
 
 	public static void main(String[] args) throws WrongBookDataException {
 		
@@ -53,6 +54,8 @@ public class Test {
 		System.out.println(Serialiser.BookToCsv(book));
 		String str = "9463523539492;[Fisher Samuel, Fisher Thomas, Piper Robert];Sky and Mount;2004-06-07;France, Red star;363.29";
 		System.out.println(Serialiser.csvToBook(str));
+		
+		FileSystem.dbToCsv(lib, "libraryDB.txt", false);
 	}
 
 }

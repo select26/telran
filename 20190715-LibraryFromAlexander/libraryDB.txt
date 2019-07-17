@@ -1,0 +1,20 @@
+8906065613158;[Brown John];Sun and Moon;2006-02-01;Germany, Red star;496.58
+3513476562903;[Brown Jack, Fisher Jack, Fisher Thomas];Hell and Paradise;2014-04-18;Germany, Gold star;172.0
+9063746489479;[Johnson Robert];Eagle and Rat;2012-08-08;Germany, Black star;316.04
+1638611203820;[Brown Samuel, Johnson John, Johnson Samuel];Wind and Rain;2006-10-16;USA, Blue star;299.0
+2909892608699;[Brown Robert, Johnson Robert];Eagle and Rat;2009-09-19;Germany, Black star;480.82
+4284853251960;[Brown Thomas];Sky and Mount;2009-10-16;Germany, Blue star;220.34
+4429774548723;[Johnson Jack, Johnson Samuel];Creek and River;2016-04-29;USA, Blue star;790.48
+3684785219765;[Brown Robert, Fisher Samuel, Smith Thomas];Strawberry and Garlic;2016-03-08;USA, Yellow star;824.4
+4286355043034;[Fisher Jack, Johnson Thomas, Piper Jack];Eagle and Rat;2012-01-25;USA, Black star;997.56
+2212479163974;[Brown Jack];Sun and Moon;2003-07-03;Germany, Yellow star;188.23
+6737126467535;[Brown Thomas, Smith Thomas];Tomato and Potato;2006-04-28;Israel, Blue star;344.64
+7184161060139;[Brown Samuel, Johnson John, Johnson Robert];Sky and Mount;2012-11-08;Germany, Red star;402.81
+9884345245458;[Fisher Thomas, Johnson John, Johnson Robert];Tomato and Potato;2003-01-21;USA, Black star;886.91
+9107191919258;[Brown Jack, Brown Thomas, Smith Jack];Sea and Cloud;2015-10-18;France, Black star;624.98
+6647150350874;[Piper Robert];Tomato and Potato;2001-07-30;France, Black star;781.01
+3011987505815;[Fisher Samuel, Johnson Thomas, Smith Thomas];Sun and Moon;2001-08-23;France, Red star;868.1
+6332432869099;[Brown Jack, Johnson John, Piper Jack];Hell and Paradise;2000-06-24;Germany, Black star;950.08
+2916223864548;[Johnson Samuel, Johnson Thomas];Creek and River;2000-01-20;Germany, Black star;497.48
+1717740710250;[Fisher Jack, Johnson Samuel, Smith Thomas];Sky and Mount;2019-04-05;Germany, Black star;802.23
+2912472654288;[Piper Samuel];Wind and Rain;2000-09-06;USA, Red star;687.69

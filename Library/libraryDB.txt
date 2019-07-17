@@ -1,0 +1,20 @@
+8641902110688;[Brown Thomas, Piper Jack];Hell and Paradise;2007-07-31;Israel, Red star;604.1
+6877194286924;[Fisher Samuel, Johnson Thomas, Piper Jack];Sky and Mount;2015-11-22;France, Gold star;438.05
+6745695096102;[Smith Jack];Wind and Rain;2017-10-02;USA, Yellow star;333.96
+4521712751171;[Fisher Robert];Wind and Rain;2003-01-15;USA, Red star;142.93
+2970301002048;[Brown Thomas, Fisher Robert];Sea and Cloud;2013-10-07;Germany, Yellow star;844.09
+2728218425207;[Fisher Samuel, Smith Samuel, Smith Thomas];Frog and Snake;2006-11-05;USA, Red star;964.53
+9549297271600;[Smith Robert];Strawberry and Garlic;2010-05-06;France, Red star;716.18
+8633373476919;[Piper Samuel];Sea and Cloud;2008-09-03;Germany, Gold star;875.83
+9246004796189;[Johnson Thhomas, Piper Samuel];Frog and Snake;2017-07-08;USA, Black star;614.99
+5929105291176;[Fisher Roobert, Smith Robert];Hell and Paradise;2014-10-24;Germany, Gold star;977.46
+8641902110688;[Brown Thomas, Piper Jack];Hell and Paradise;2007-07-31;Israel, Red star;604.1
+6877194286924;[Fisher Samuel, Johnson Thomas, Piper Jack];Sky and Mount;2015-11-22;France, Gold star;438.05
+6745695096102;[Smith Jack];Wind and Rain;2017-10-02;USA, Yellow star;333.96
+4521712751171;[Fisher Robert];Wind and Rain;2003-01-15;USA, Red star;142.93
+2970301002048;[Brown Thomas, Fisher Robert];Sea and Cloud;2013-10-07;Germany, Yellow star;844.09
+2728218425207;[Fisher Samuel, Smith Samuel, Smith Thomas];Frog and Snake;2006-11-05;USA, Red star;964.53
+9549297271600;[Smith Robert];Strawberry and Garlic;2010-05-06;France, Red star;716.18
+8633373476919;[Piper Samuel];Sea and Cloud;2008-09-03;Germany, Gold star;875.83
+9246004796189;[Johnson Thhomas, Piper Samuel];Frog and Snake;2017-07-08;USA, Black star;614.99
+5929105291176;[Fisher Roobert, Smith Robert];Hell and Paradise;2014-10-24;Germany, Gold star;977.46
