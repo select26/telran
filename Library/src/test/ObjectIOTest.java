@@ -46,7 +46,9 @@ public class ObjectIOTest {
 //		}
 		System.out.println();
 		lib.fromBinFile(dbFilename);
+//		lib.fillLibrary(2);
 		for(Book b : lib.getAllBooks()) System.out.println(b);
+//		lib.toBinFile(dbFilename, true);
 	}
 
 }

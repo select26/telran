@@ -88,6 +88,30 @@ public abstract class Library implements ILibrary {
 		}
 		return true;
 	}
+
+	//Второй параметр определяет функционал Append: если он true, то база на диске дополняется,
+	//а не перезаписывается
+	public boolean toBinFile(String dbFilename, boolean appendEnable) throws FileNotFoundException, ClassNotFoundException, IOException {
+		if (appendEnable) fromBinFile(dbFilename);
+		return toBinFile(dbFilename);
+		/*
+		boolean result = false;
+		if (appendEnable==true) {
+			HashMap<Long, Book> tempLib = new HashMap<>(isbnHM);
+			try {
+				fromBinFile(dbFilename);
+			} catch (Exception e) {
+				return false;
+			}
+			result = toBinFile(dbFilename);
+			isbnHM = new HashMap<>(tempLib);
+		} else {
+			fromBinFile(dbFilename);
+		}
+
+		return result;
+		*/
+	}
 	
 	public boolean fromBinFile(String dbFilename) throws FileNotFoundException, IOException, ClassNotFoundException {
 		try (
