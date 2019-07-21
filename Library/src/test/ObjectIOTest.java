@@ -9,6 +9,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 import dto.Book;
+import enumerations.Enumerations;
 import exceptions.WrongLinesException;
 import library.Library;
 import library.LibraryMaps;
@@ -49,6 +50,8 @@ public class ObjectIOTest {
 //		lib.fillLibrary(2);
 		for(Book b : lib.getAllBooks()) System.out.println(b);
 //		lib.toBinFile(dbFilename, true);
+		
+		for(Class c : Enumerations.ENUMS) System.out.println(c);
 	}
 
 }

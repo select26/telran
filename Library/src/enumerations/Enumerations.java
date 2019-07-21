@@ -1,13 +1,19 @@
 package enumerations;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
 
+import library.Library;
+
 public class Enumerations {
 	
 	public static TreeMap<Double, PublisherCountry> PROBABILITIES_MAP = new TreeMap<>();
+	public static ArrayList<Class> ENUMS = Library.enumClasses(); 
+	
+	
 	public static PublisherCountry[] PUBLISHER_COUNTRIES = PublisherCountry.values(); 
 	public static PublisherName[] PUBLISHER_NAMES = PublisherName.values();
 	public static AuthorName[] AUTHOR_NAMES = AuthorName.values();
