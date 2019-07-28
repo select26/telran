@@ -1,5 +1,5 @@
 package app;
 
 public enum Language {
-	Java, Cpp, Pyton, Fortran;
+	Java, Cpp, Pyton, Fortran, BASIC, Pascal;
 }

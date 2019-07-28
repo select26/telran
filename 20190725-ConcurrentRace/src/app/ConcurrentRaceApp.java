@@ -10,9 +10,9 @@ public class ConcurrentRaceApp {
 		ArrayList<Thread> alt = new ArrayList<>();
 		for (int i = 0; i < NUM_COLHOZ; i++) alt.add(new Thread(new Colkhoz()));
 		for (Thread t : alt) t.start();
-//		for (Thread t : alt) t.join();
+		for (Thread t : alt) t.join();
 
-		Thread.sleep(3000);
+//		Thread.sleep(3000);
 		
 		System.out.println("V colhoze:" + Colkhoz.zakroma);
 	}
