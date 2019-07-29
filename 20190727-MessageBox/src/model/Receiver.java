@@ -1,10 +1,14 @@
 package model;
 
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 import log.MessageBoxLog;
 
 public class Receiver implements Runnable{
+	
+	private static Lock lock = new ReentrantLock();
 	
 	private String name;
 	private int numberOfMessages;
@@ -28,7 +32,13 @@ public class Receiver implements Runnable{
 			
 			try {
 				Message msg = MessageBox.receiveMessage(this);
-				MessageBoxLog.LOG.add(msg);
+				lock.lock();
+				try {
+					MessageBoxLog.LOG.add(msg);
+				} finally {
+					lock.unlock();
+				}
+
 			} catch (InterruptedException e) {
 				throw new RuntimeException(e);
 			}
