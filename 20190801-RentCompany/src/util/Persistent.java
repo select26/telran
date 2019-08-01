@@ -1,34 +1,31 @@
 package util;
 
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Map;
-
+/* 
+ * Этот класс сохраняет и восстанавливает из файла тип Map
+ */
 public class Persistent {
 
-	public static <K, V> void Save(Map<K, V> obj, String fileName) throws FileNotFoundException, IOException { // Write to file
-
+	public static <K, V> void saveMapToFile(Map<K, V> obj, String fileName) 				// Write to file 
+			throws FileNotFoundException, IOException { 
 		try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(fileName, false));) {
-			for (Map.Entry<K, V> entry : obj.entrySet())
-				oos.writeObject(entry);
-			
-//			for (Map.Entry<K, V> entry : map.entrySet())
-//			    action.accept(entry.getKey(), entry.getValue());
+			oos.writeObject(obj);
 		}
 	}
 	
-	public static <K, V> void Restore(Map<K, V> obj, String fileName) throws FileNotFoundException, IOException { // Read from file
-
-		try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(fileName));) {
-//			for (Map.Entry<K, V> entry : obj.entrySet())
-//				oos.writeObject(entry);
-			obj.put
-			Book book = (Book)ois.readObject();
-			
+	@SuppressWarnings("unchecked")
+	public static <K, V> Map<K, V> restoreMapFromFile(Map<K, V> obj, String fileName)		// Read from file
+			throws FileNotFoundException, IOException, ClassNotFoundException { 
+		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fileName));) {
+			Map<K, V> map = (Map<K, V>) ois.readObject();
+			return map;
 		}
 	}
 
-	
 }
