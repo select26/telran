@@ -22,7 +22,7 @@ public class AddCarModel extends RentCompanyItem {
 	@Override
 	public void perform() {
 //		System.out.println(company);									//DEBUG!!
-		System.out.println("Your choice is " + displayedName());
+		inputOutput.outputLine("Your choice is " + displayedName());
 		String modelName=inputOutput.inputString("Enter model name");
 		if(modelName==null)//cancel processing
 			return;

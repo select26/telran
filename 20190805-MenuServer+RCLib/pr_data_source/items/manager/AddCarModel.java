@@ -1,9 +1,9 @@
-package items.manager;
+package telran.cars.items.manager;
 
-import dto.Model;
-import items.RentCompanyItem;
-import model.IRentCompany;
-import screenmenu.InputOutput;
+import telran.cars.dto.Model;
+import telran.cars.items.RentCompanyItem;
+import telran.cars.service.IRentCompany;
+import telran.view.InputOutput;
 
 public class AddCarModel extends RentCompanyItem {
 
@@ -21,8 +21,6 @@ public class AddCarModel extends RentCompanyItem {
 
 	@Override
 	public void perform() {
-//		System.out.println(company);									//DEBUG!!
-		System.out.println("Your choice is " + displayedName());
 		String modelName=inputOutput.inputString("Enter model name");
 		if(modelName==null)//cancel processing
 			return;
@@ -33,16 +31,14 @@ public class AddCarModel extends RentCompanyItem {
 		if(gasTank==null)return;
 		String companyName=inputOutput.inputString("Enter company name");
 		if(companyName==null)return;
-		String country=inputOutput.inputString("Enter country");
+		String country=inputOutput.inputString("Enter contry");
 		if(country==null)return;
-		Integer priceDay=inputOutput.inputInteger("Enter price per day", 50, 1000);
+		Integer priceDay=inputOutput.inputInteger("Enter price day", 50, 1000);
 		if(priceDay==null)return;
 		Model model=
 				new Model(modelName, gasTank, companyName,
 						country, priceDay);
-//		System.out.println(model);  									//DEBUG!!
 		inputOutput.outputLine(company.addModel(model));
-//		System.out.println("add result is: " + company.addModel(model));
 
 	}
 
