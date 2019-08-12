@@ -5,7 +5,7 @@ import java.time.LocalTime;
 
 import randomlib.RandomLib;
 
-public class JbdcApp {
+public class JbdcAppSingleCommit {
 
 	public static void main(String[] args) throws SQLException {
 		
@@ -22,14 +22,19 @@ public class JbdcApp {
 			System.out.println("Соединение с СУБД выполнено.");
 			
 			t1 = System.currentTimeMillis();
-			String sql;
+			String sql = "INSERT INTO person (id_person,name_person, age_person, height_person, married_person) "
+					+ "VALUES ";
 			for (int i = 0; i < 1000; i++) {
-				sql = "INSERT INTO person (id_person,name_person, age_person, height_person, married_person) "
-						+ "VALUES ('0','" + RandomLib.nextStringFromSet(names) + "', " + RandomLib.nextIntRange(5, 50)
-						+ ", " + RandomLib.nextIntRange(120, 192) + ", " + RandomLib.nextIntRange(0, 1) + ");";
-				int result = statement.executeUpdate(sql);
+				sql = sql + "('0','" + RandomLib.nextStringFromSet(names) + "', " + RandomLib.nextIntRange(5, 50)
+						+ ", " + RandomLib.nextIntRange(120, 192) + ", " + RandomLib.nextIntRange(0, 1) + "),";
+		
+//				int result = statement.executeUpdate(sql);
 			}
+			
+			sql = sql.substring(0, sql.length()-1) + ";";
+			int result = statement.executeUpdate(sql);
 			t2 = System.currentTimeMillis();
+//			System.out.println(sql);
 			
 			sql = "SELECT * FROM person";
 			ResultSet resultSet = statement.executeQuery(sql);
@@ -38,14 +43,14 @@ public class JbdcApp {
 //			resultSet.next();
 //			System.out.println(resultSet.getInt(1));				// Print key of last inserted row	
 			
-			
+			int i = 1;
 			while (resultSet.next()) {
 //				System.out.println(resultSet.getInt(1) + "\t" + 
 //									resultSet.getString("name_person") + "\t" +
 //									resultSet.getInt(3) + "\t" + 
 //									resultSet.getDouble(4) + "\t" + 
 //									resultSet.getBoolean(5));
-				System.out.println(new Person(resultSet.getInt(1), 
+				System.out.println(i++ + "\t" + new Person(resultSet.getInt(1), 
 						resultSet.getString("name_person"),
 						resultSet.getInt(3),
 						resultSet.getDouble(4), 
