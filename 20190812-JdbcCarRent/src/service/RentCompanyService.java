@@ -85,9 +85,10 @@ public class RentCompanyService implements IRentCompanyService {
 
 	@Override
 	public Car getCar(String regNumber) throws SQLException {
+		Statement statement1 = connection.createStatement();
 		String sql = "SELECT * FROM car WHERE id_car = '" + regNumber + "'";
 		System.out.println(sql);
-		ResultSet resultSet = statement.executeQuery(sql);
+		ResultSet resultSet = statement1.executeQuery(sql);
 		if (!resultSet.next()) return null;
 		return new Car (resultSet.getString(1),
 							getModel(resultSet.getString(2)),
