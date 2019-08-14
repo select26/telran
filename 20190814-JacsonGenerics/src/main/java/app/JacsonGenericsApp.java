@@ -29,10 +29,12 @@ public class JacsonGenericsApp {
 		 */
 		System.out.println((new TypeReference<ArrayList<Person>>() {}).getClass().getGenericSuperclass());
 		String json = mapper.writeValueAsString(persons);
+//		String json = ow.writeValueAsString(persons);
 		System.out.println(json);
 		ArrayList<Person> deserialized = 
-				mapper.readValue(json, persons.getClass());
+				mapper.readValue(json, new TypeReference<ArrayList<Person>>() {});
 		System.out.println(deserialized);
+		System.out.println(deserialized.get(0).getName());
 
 	}
 
