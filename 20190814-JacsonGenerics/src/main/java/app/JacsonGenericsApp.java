@@ -1,6 +1,7 @@
 package app;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,6 +12,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
+import dto.JsonEntity;
 import dto.Person;
 
 public class JacsonGenericsApp {
@@ -22,19 +24,21 @@ public class JacsonGenericsApp {
 		
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.registerModule(new JavaTimeModule());
-		ObjectWriter ow = 
-				mapper.writerFor(new TypeReference<ArrayList<Person>>() {/*пустой анон. класс для указания типа родителя*/});  
+//		ObjectWriter ow = 
+//				mapper.writerFor(new TypeReference<ArrayList<Person>>() {/*пустой анон. класс для указания типа родителя*/});  
 		/* Получим generic-класс, которым параметризован класс
 		 * console: com.fasterxml.jackson.core.type.TypeReference<java.util.ArrayList<dto.Person>>
 		 */
-		System.out.println((new TypeReference<ArrayList<Person>>() {}).getClass().getGenericSuperclass());
+//		System.out.println((new TypeReference<ArrayList<Person>>() {}).getClass().getGenericSuperclass());
 		String json = mapper.writeValueAsString(persons);
 //		String json = ow.writeValueAsString(persons);
+
 		System.out.println(json);
 		ArrayList<Person> deserialized = 
-				mapper.readValue(json, new TypeReference<ArrayList<Person>>() {});
+//				mapper.readValue(json, new TypeReference<ArrayList<Person>>() {});
+				mapper.readValue(json, mapper.getTypeFactory().constructCollectionType(ArrayList.class, Person.class));
 		System.out.println(deserialized);
-		System.out.println(deserialized.get(0).getName());
+		System.out.println(deserialized.get(0).getName());		//Убедимся, что это ArrayList
 
 	}
 
