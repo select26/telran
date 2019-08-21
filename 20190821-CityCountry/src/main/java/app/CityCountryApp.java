@@ -1,16 +1,13 @@
-package application;
-
-import java.util.TimeZone;
-
-import javax.annotation.PostConstruct;
+package app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class OTM_App_Bi {
+public class CityCountryApp {
 
 	public static void main(String[] args) {
-		SpringApplication.run(OTM_App_Bi.class, args);
+		SpringApplication.run(CityCountryApp.class, args);
 	}
+
 }

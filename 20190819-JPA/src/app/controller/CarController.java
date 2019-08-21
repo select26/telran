@@ -78,5 +78,10 @@ public class CarController {
 									) {
 		return listToList(service.getCarsByModelAndEngineAndAc(model, engine, ac, LocalDate.parse(date)));
 	}
+	
+	@GetMapping("/getCarsByDate") 
+	public List<Car> getCarsByDate(@RequestParam("date") String date) {
+		return listToList(service.getCarsByDate(LocalDate.parse(date)));
+	}
 
 }

@@ -1,40 +1,42 @@
-package application.entities;
+package app.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import dto.City;
+import dto.Country;
+import lombok.EqualsAndHashCode;
 
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter @Setter
-
+//@EqualsAndHashCode{of = {"id"}}
 @Entity
 @Table(name="city")
-public class City {
-	
+public class CityEntity {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id_city;
+	
 	private String name;
 	
 	@ManyToOne
 	@JsonBackReference
 	private Country country;
-	
-	public City(String name, Country country) {
+
+	public CityEntity(String name, CountryEntity country) {
+		super();
 		this.name = name;
 		this.country = country;
 	}
+
+//	public CityEntity(City city) {
+//		this(city.getCity(), city.getCountry());
+//	}
+
+	public CityEntity(City city){
+		this(city.getCity(), new CountryEntity(city.getCountry()));
+	}
+	
+	public City
 	
 	@Override
 	public int hashCode() {
@@ -53,7 +55,7 @@ public class City {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		City other = (City) obj;
+		CityEntity other = (CityEntity) obj;
 		if (id_city != other.id_city)
 			return false;
 		if (name == null) {
@@ -63,5 +65,5 @@ public class City {
 			return false;
 		return true;
 	}
-
+	
 }

@@ -60,4 +60,9 @@ public class CarService implements ICarService{
 	public List<CarEntity> getCarsByModelAndEngineAndAc(String model, double engine, boolean ac, LocalDate date) {
 		return carRepo.findByModelAndEngineAndAcAndProductionDate(model, engine, ac, date);
 	}
+
+	@Override
+	public List<CarEntity> getCarsByDate(LocalDate date) {
+		return carRepo.findByProductionDate(date);
+	}
 }

@@ -11,5 +11,5 @@ public interface I_OTM_Model {
 	public boolean addCity(String city_name, String country_name );
 	public boolean deleteCountry(int id);
 	public Country getCountry(String name);
-	public  Set<City> getSities(String country_name);
+	public Set<City> getSities(String country_name);
 }

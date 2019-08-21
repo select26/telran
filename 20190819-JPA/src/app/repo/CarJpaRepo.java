@@ -19,5 +19,5 @@ public interface CarJpaRepo extends JpaRepository<CarEntity, Integer>{
 	List<CarEntity> findByQuery(int num);
 	
 	List<CarEntity> findByModelAndEngineAndAcAndProductionDate(String model, double engine, boolean ac, LocalDate date);
-
+	List<CarEntity> findByProductionDate(LocalDate date);
 }
