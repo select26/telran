@@ -20,7 +20,7 @@ public class RentalRecordService {							//implements ICarPerson {
 	@Autowired	RentalRecordMongoRepo recordRepo;
 	
 	public boolean addRecord(RentRecordDoc record) {
-//		Если машина есть и уже не в работе
+		// Если машина есть и уже не в работе
 		if(carRepo.existsById(record.getCar()) && !(carRepo.findById(record.getCar())).get().isInUse()) {
 			recordRepo.save(record);
 			CarDoc res = carRepo.findById(record.getCar()).get();		// найдем машину
@@ -32,9 +32,7 @@ public class RentalRecordService {							//implements ICarPerson {
 	}
 	
 	public RentRecordDoc getRecordByCar(String car){
-//		System.err.println("[getModelByName] name: " + name);
 		RentRecordDoc res = recordRepo.findById(car).orElse(null);
-//		System.err.println("[getModelByName] ModelDoc response: " + res);
 		return res;
 	}
 	public List<RentRecordDoc> getAllRecords(){
