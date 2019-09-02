@@ -35,14 +35,10 @@ public class CarController {
 	public List<CarDoc> getAllCars(){
 		return carService.getAllCars();
 	}
-	
+	//Требует доработки
 	@PostMapping("/getAllCarsByDriver")
 	public List<CarDoc> getAllCarsByDriver(@RequestParam int id){
-//		public List<CarDoc> getAllCarsByDriver(@RequestParam int id){
-		List<CarDoc> cars = new ArrayList<CarDoc>();
-		List<RentRecordDoc> recs = reco							//carService.getAllCarsByDriver(id);
-		for(RentRecordDoc rec : recs) cars.add(carService.getCarByVin(rec.getCar()) ); 
-		return cars;
+		return carService.getAllCarsByDriver(id);
 	}
 	
 }

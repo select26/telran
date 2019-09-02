@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +19,16 @@ public class CarService implements ICarService{
 
 	@Autowired										// всесто new ... 
 	CarJpaRepo carRepo;
+	
+	@PostConstruct									// запуск после коструктора
+	private void postConstruct() {					// демонстрация запуска метода с аннотаций
+		System.err.println("@@@@ PostConsrtuct");	// @PostConstruct
+	}
+	
+	@PreDestroy
+	private void preDestroy() {
+		System.err.println("@@@@ PreDestroy");		// @PreDestroy
+	}
 	
 	public boolean addCar(CarEntity car) {
 		if (carRepo.existsById(car.getId())) return false;

@@ -1,53 +1,53 @@
 package app.services;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import app.docs.*;
+import app.docs.CarDoc;
+import app.docs.ModelDoc;
+import app.docs.RentRecordDoc;
 import app.repo.*;
-import dto.*;
+import dto.Model;
+import dto.RentRecord;
 
 @Service
-public class CarService {							//implements ICarPerson {
+public class RentalRecordService {							//implements ICarPerson {
 	
 	@Autowired	CarMongoRepo	carRepo;
 	@Autowired	DriverMongoRepo driverRepo;
 	@Autowired	ModelMongoRepo	modelRepo;
 	@Autowired	RentalRecordMongoRepo recordRepo;
 	
-	public boolean addCar(Car car) {
-//		System.err.println("[addCar] name: " + car);
-		if(!modelRepo.existsById(car.getModel().getName()))
-			modelRepo.save(new ModelDoc(car.getModel()));
-		if(carRepo.existsById(car.getVin())) return false;
-		carRepo.save(new CarDoc(car));
-		return true;
+	public boolean addRecord(RentRecordDoc record) {
+//		Если машина есть и уже не в работе
+		if(carRepo.existsById(record.getCar()) && !(carRepo.findById(record.getCar())).get().isInUse()) {
+			recordRepo.save(record);
+			CarDoc res = carRepo.findById(record.getCar()).get();		// найдем машину
+			res.setInUse(true);											// теперь занята
+			carRepo.save(res);											// сохраним
+			return true;
+		}
+		return false;
 	}
 	
-	public CarDoc getCarByVin(String vin){
+	public RentRecordDoc getRecordByCar(String car){
 //		System.err.println("[getModelByName] name: " + name);
-		CarDoc res = carRepo.findById(vin).orElse(null);
+		RentRecordDoc res = recordRepo.findById(car).orElse(null);
 //		System.err.println("[getModelByName] ModelDoc response: " + res);
 		return res;
 	}
-	public List<CarDoc> getAllCars(){
-		return carRepo.findAll();
-	}
-	//Требует доработки	
-	public List<CarDoc> getAllCarsByDriver(int id) {		
-		System.err.println(recordRepo.findByDriver(id));
-		List<CarDoc> cars = new ArrayList<CarDoc>();
-		List<RentRecordDoc> recs = recordRepo.findByDriver(id);		//все записи с этим водителем
-		for(RentRecordDoc rec : recs) cars.add(carRepo.findById(rec.getCar()).orElse(null));
-		System.err.println("[cars: ]" + cars);
-		return cars;
+	public List<RentRecordDoc> getAllRecords(){
+		return recordRepo.findAll();
 	}
 
+	//	@Override
+//	public boolean addOwner(PersonDto person) {
+//		if(personRepo.existsById(person.getId())) return false;
+//		personRepo.save(new PersonDoc(person));
+//		return true;
+//	}
+//
 //	@Override
 //	public boolean addCar(CarDto car) {
 //		if(carRepo.existsById(car.getVIN())) return false;

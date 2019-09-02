@@ -4,9 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class RentalCarMongoApp {
-	
+public class BeanLifecycleApp {
+
 	public static void main(String[] args) {
-		SpringApplication.run(RentalCarMongoApp.class, args);	
+		SpringApplication.run(BeanLifecycleApp.class, args);
 	}
+
 }

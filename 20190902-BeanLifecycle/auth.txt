@@ -1,0 +1,2 @@
+log:psw1
+log2:psw2
