@@ -38,7 +38,6 @@ public class CarService {							//implements ICarPerson {
 	public List<CarDoc> getAllCars(){
 		return carRepo.findAll();
 	}
-	//Требует доработки	
 	public List<CarDoc> getAllCarsByDriver(int id) {		
 		System.err.println(recordRepo.findByDriver(id));
 		List<CarDoc> cars = new ArrayList<CarDoc>();
@@ -48,35 +47,5 @@ public class CarService {							//implements ICarPerson {
 		return cars;
 	}
 
-//	@Override
-//	public boolean addCar(CarDto car) {
-//		if(carRepo.existsById(car.getVIN())) return false;
-//		if(!personRepo.existsById(car.getOwner().getId()))			//If owner not exists
-//			personRepo.save(new PersonDoc(car.getOwner()));			//create new owner
-//		carRepo.save(new CarDoc(car));
-//		return true;
-//	}
-//
-//	@Override
-//	public List<CarDto> getOwnerCars(int id) {
-//		PersonDoc found = personRepo.findById(id).orElse(null);
-//		return found==null ?
-//				new ArrayList<CarDto>() :
-//				carRepo.findByOwnerId(id).stream()
-//									.map(car -> car.getCarDto(found))
-//									.collect(Collectors.toList() );
-//	}
-//
-//	public List<PersonDto> getAllOwners(){
-//		return personRepo.findAll().stream()
-//				.map(owner -> owner.getPersonDto())
-//				.collect(Collectors.toList() );
-//	}
-//	
-//
-//	public List<CarDto> getAllCars(){
-//		return carRepo.findAll().stream()
-//				.map(car -> car.getCarDto(personRepo.findById(car.getOwnerId()).get()))
-//				.collect(Collectors.toList() );
-//	}
+
 }
